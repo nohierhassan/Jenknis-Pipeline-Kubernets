@@ -1,0 +1,7 @@
+version: '3'
+services:
+  java-app:
+    image: "java-app:$BUILD_NUMBER"
+    build:
+      context: .
+      dockerfile: Dockerfile-openjdk
