@@ -43,7 +43,7 @@ pipeline {
       steps {
         
           sh ''' 
-              ./scripts/deploy/chagneTag.sh $BUILD_NUMBER
+              ./scripts/deploy/changeTag.sh $BUILD_NUMBER
           '''
           sshagent(['kops-master-key']) {
             sh "scp -o StrictHostKeChecking=no /scripts/deploy/java-app-pod.yml admin@18.215.126.133"
