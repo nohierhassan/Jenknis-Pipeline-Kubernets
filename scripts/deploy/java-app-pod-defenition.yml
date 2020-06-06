@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: java-app-pod
+  labels:
+    app: java-app
+spec:
+  containers:
+    - name: java-app
+      image: nohierhassan/java-app:tagVersion
+  restartPolicy: Never

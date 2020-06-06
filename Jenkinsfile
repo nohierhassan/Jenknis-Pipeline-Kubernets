@@ -43,8 +43,18 @@ pipeline {
       steps {
         
           sh ''' 
-            echo "Building"
+              ./scripts/deploy/chagneTage.sh $BUILD_NUMBER
           '''
+          sshagent(['kops-master-key']) {
+            sh "scp -o StrictHostKeChecking=no /scripts/deploy/java-app-pod.yml admin@18.215.126.133"
+          }
+          script{
+            try {
+                sh "ssh admin@18.215.126.133 kubectl apply -f ."
+            }catch(error){
+                 sh "ssh admin@18.215.126.133 kubectl apply -f ."
+            }
+          }
       }
       
     }
